@@ -2,7 +2,11 @@ import numpy as np
 from isaacsim.core.utils.rotations import euler_angles_to_quat
 # from isaacsim.oceansim.utils.config import *
 
-CAM_CONFIG_FILE_PATH = "/render/sea_vague_50/render_param_0.yaml"
+# CAM_CONFIG_FILE_PATH = "/render/sea_vague_50/render_param_0.yaml"
+CAM_CONFIG_FILE_PATH = "/render/sea_vague_82/render_param_0.yaml"
+
+# WORLD_PTH = "/collected_MHL/mhl_water.usd"
+WORLD_PTH = "/LIAS_OCEAN/lias_ocean_world.usd"
 
 ROS_TAG = True
 # ROS_TAG = False
@@ -48,6 +52,14 @@ FX = 320.0
 FY = 320.0
 CX = 320.0
 CY = 240.0
+
+Min_range = 0.1 # m
+Max_range = 5.0 # m
+Range_res = 0.005 # m
+Hori_fov = 60.0 # deg
+Vert_fov = 12.0 # deg
+Angular_res = 0.4 # deg
+Hori_res = 3000 # number of horizontal pixels
 
 
 pixel_size_microns = 3.0  # 单位：微米 (microns)

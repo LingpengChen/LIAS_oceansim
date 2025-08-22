@@ -10,7 +10,9 @@
 import asyncio
 import gc
 import weakref
-
+import os
+import subprocess
+import sys
 
 import omni
 import omni.kit.commands

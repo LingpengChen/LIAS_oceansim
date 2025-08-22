@@ -10,7 +10,60 @@
 import asyncio
 import gc
 import weakref
+import os
+import subprocess
+import sys
 
+# Setup ROS environment for rospy support
+def setup_ros_environment():
+    # Add common ROS Python paths to sys.path
+    ros_python_paths = [
+        '/opt/ros/noetic/lib/python3/dist-packages',
+        '/opt/ros/noetic/lib/python3.8/dist-packages',  # for Python 3.8
+        '/usr/lib/python3/dist-packages',  # system packages
+        '/usr/lib/python3.8/dist-packages',  # system Python 3.8
+    ]
+    
+    paths_added = 0
+    for path in ros_python_paths:
+        if os.path.exists(path) and path not in sys.path:
+            sys.path.insert(0, path)
+            paths_added += 1
+            print(f"Added to Python path: {path}")
+    
+    print(f"Added {paths_added} paths to sys.path")
+    return True
+       
+
+# Setup ROS before importing anything else
+setup_ros_environment()
+
+# Test rospy import
+try:
+    import rospy
+    print("✅ ROS environment loaded successfully, rospy available")
+    print(f"ROS_MASTER_URI: {os.environ.get('ROS_MASTER_URI', 'Not set')}")
+    print(f"ROS_PACKAGE_PATH: {os.environ.get('ROS_PACKAGE_PATH', 'Not set')}")
+    print(f"rospy location: {rospy.__file__}")
+except ImportError as e:
+    print(f"❌ Failed to import rospy: {e}")
+    print(f"Current Python path includes:")
+    for i, path in enumerate(sys.path[:5]):  # Show first 5 paths
+        print(f"  {i}: {path}")
+    print("...")
+    
+    # Check if ROS package directories exist
+    ros_dirs = ['/opt/ros/noetic/lib/python3/dist-packages', '/usr/lib/python3/dist-packages']
+    for ros_dir in ros_dirs:
+        if os.path.exists(ros_dir):
+            print(f"📁 {ros_dir} exists")
+            rospy_path = os.path.join(ros_dir, 'rospy')
+            if os.path.exists(rospy_path):
+                print(f"  ✅ rospy found at {rospy_path}")
+            else:
+                print(f"  ❌ rospy not found in {ros_dir}")
+        else:
+            print(f"📁 {ros_dir} does not exist")
 
 import omni
 import omni.kit.commands

@@ -4,8 +4,8 @@ from isaacsim.core.utils.rotations import euler_angles_to_quat
 
 CAM_CONFIG_FILE_PATH = "/render/sea_vague_50/render_param_0.yaml"
 
-ROS_TAG = True
-# ROS_TAG = False
+# ROS_TAG = True
+ROS_TAG = False
 
 SONAR_VIEW = not ROS_TAG
 CAM_VIEW = not ROS_TAG

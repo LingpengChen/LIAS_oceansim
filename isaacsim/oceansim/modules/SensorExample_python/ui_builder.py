@@ -299,7 +299,7 @@ class UIBuilder():
             #                                 )
          
             scene_prim_path = '/World/scene'
-            scene_usd_path = get_oceansim_assets_path() + "/lias_ocean_world.usd"
+            scene_usd_path = get_oceansim_assets_path() + WORLD_PTH
             add_reference_to_stage(usd_path=scene_usd_path, prim_path=scene_prim_path)    
             
             # scene_prim_mesh_path = scene_prim_path + '/stone'

@@ -6,6 +6,7 @@ from omni.replicator.core.scripts.functional import write_np
 import warp as wp
 from isaacsim.oceansim.utils.ImagingSonar_kernels import *
 
+from isaacsim.oceansim.utils.config import *
 
 # Future TODO
 # In future release, wrap this class around RTX lidar
@@ -21,13 +22,13 @@ class ImagingSonarSensor(Camera):
                  translation = None, 
                  render_product_path = None,
                  physics_sim_view = None,
-                 min_range: float = 0.1, # m
-                 max_range: float = 5.0, # m
-                 range_res: float = 0.005, # m
-                 hori_fov: float = 60.0, # deg
-                 vert_fov: float = 12.0, # deg
-                 angular_res: float = 0.4, # deg
-                 hori_res: int = 3000 # isaac camera render product only accepts square pixel, 
+                 min_range: float = Min_range, # m
+                 max_range: float = Max_range, # m
+                 range_res: float = Range_res, # m
+                 hori_fov: float = Hori_fov, # deg
+                 vert_fov: float = Vert_fov, # deg
+                 angular_res: float = Angular_res, # deg
+                 hori_res: int = Hori_res # isaac camera render product only accepts square pixel, 
                                       # for now vertical res is automatically set with ratio of hori_fov vs.vert_fov 
                  ):
         

@@ -1,20 +1,3 @@
-# LIAS_oceansim
-2025-07-20 15:43:41 [1,130ms] [Error] [carb] Failed to create change watch for `/home/clp/isaacsim/exts/isaacsim.app.selector/config`: errno=28/No space left on device
-# 清理 Omniverse launcher 和 cache 的默认位置
-rm -rf ~/.cache/ov
-rm -rf ~/.local/share/ov 最好不删除
-rm -rf ~/.local/share/Cache/ov
-
-# 清理 Isaac Sim 自身在安装目录下的缓存
-# 请将 <isaac_sim_path> 替换为您的 Isaac Sim 安装路径
-# 例如: /home/clp/isaacsim/
-rm -rf ~/isaacsim/extscache/
-
-
-
-isaac-sim.selector.sh   source /opt/ros/noetic/setup.bash
-extsUser/OceanSim/isaacsim/oceansim/modules/SensorExample_python/extension.py   
-
 import os
 import subprocess
 import sys
@@ -75,4 +58,10 @@ def setup_ros_environment():
         return False
 
 # Setup ROS before importing anything else
-setup_ros_environment()
+# setup_ros_environment()
+
+
+# Test rospy import
+
+import rospy
+print("✅ ROS environment loaded successfully, rospy available")
